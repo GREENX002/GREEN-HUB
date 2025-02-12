@@ -1,1 +1,52 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/GREENX002/GREEN-HUB/refs/heads/main/GREEN-HUB"))()
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.CoreGui
+
+-- Create a Frame to act as the main menu container
+local menuFrame = Instance.new("Frame")
+menuFrame.Size = UDim2.new(0, 300, 0, 400)
+menuFrame.Position = UDim2.new(0.5, -150, 0.5, -200)
+menuFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+menuFrame.Parent = screenGui
+
+-- Create a Title Label for the menu
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0, 50)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.Text = "Menu Title"
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextSize = 24
+titleLabel.Parent = menuFrame
+
+-- Create a Button for the menu
+local function createButton(buttonText, positionY)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(1, -20, 0, 50)
+    button.Position = UDim2.new(0, 10, 0, positionY)
+    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.Text = buttonText
+    button.Font = Enum.Font.SourceSans
+    button.TextSize = 20
+    button.Parent = menuFrame
+    return button
+end
+
+-- Create multiple buttons
+local button1 = createButton("Button 1", 60)
+local button2 = createButton("Button 2", 120)
+local button3 = createButton("Button 3", 180)
+local button4 = createButton("Button 4", 240)
+
+-- Function to handle button clicks
+local function onButtonClick(button)
+    print(button.Text .. " clicked!")
+end
+
+-- Connect button clicks to the function
+button1.MouseButton1Click:Connect(function() onButtonClick(button1) end)
+button2.MouseButton1Click:Connect(function() onButtonClick(button2) end)
+button3.MouseButton1Click:Connect(function() onButtonClick(button3) end)
+button4.MouseButton1Click:Connect(function() onButtonClick(button4) end)
